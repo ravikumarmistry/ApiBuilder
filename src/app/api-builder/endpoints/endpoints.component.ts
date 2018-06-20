@@ -7,9 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EndpointsComponent implements OnInit {
 
-  constructor() { }
+  public selectTabName: string;
+  constructor() { 
+    this.selectTabName = 'general';
+  }
 
   ngOnInit() {
+  }
+
+  changeTab(name : string){
+    this.selectTabName = name;
   }
 
 }
