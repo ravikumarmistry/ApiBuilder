@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeneratorModel, GeneratorSteps } from '../_models/GeneratorModel';
 
 @Component({
   selector: 'app-endpoints',
@@ -6,17 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./endpoints.component.css']
 })
 export class EndpointsComponent implements OnInit {
-
-  public selectTabName: string;
-  constructor() { 
-    this.selectTabName = 'general';
+  public general: GeneratorModel;
+  constructor() {
+    this.general = new GeneratorModel();
   }
 
   ngOnInit() {
   }
 
-  changeTab(name : string){
-    this.selectTabName = name;
+  changeTab(step: GeneratorSteps) {
+    this.general.selectTabName = step;
   }
 
 }

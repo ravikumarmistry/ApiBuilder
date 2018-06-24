@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { GeneratorModel, GeneratorSteps } from '../_models/GeneratorModel';
 
 @Component({
   selector: 'app-relations',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RelationsComponent implements OnInit {
 
-  constructor() { }
+
+  @Input() general: GeneratorModel;
+
 
   ngOnInit() {
   }
 
+  SaveData() {
+    debugger
+    this.general.selectTabName = GeneratorSteps.properties,
+    console.log(this.general);
+  }
+  
 }

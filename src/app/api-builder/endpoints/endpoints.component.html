@@ -2,23 +2,26 @@
     crossorigin="anonymous">
 
 <div class="container">
+    <div style="margin:10px;">
+        FORM DATA : {{general | json}}
+        Tab : {{general.selectTabName | json}}
+    </div>
     <div class="row">
         <div class="col-md-12">
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation" [ngClass]="{ 'active' : selectTabName == 'general' }">
-                    <a (click)="changeTab('general')" >Genaral</a>
+                <li role="presentation" [ngClass]="{ 'active' : general.selectTabName == 0 }">
+                    <a (click)="changeTab(0)">Genaral</a>
                 </li>
-                <li role="presentation" [ngClass]="{ 'active' : selectTabName == 'properties' }">
-                    <a (click)="changeTab('properties')">Properties</a>
+                <li role="presentation" [ngClass]="{ 'active' : general.selectTabName == 1 }">
+                    <a (click)="changeTab(1)">Properties</a>
                 </li>
-                <li role="presentation" [ngClass]="{ 'active' : selectTabName == 'relations' }">
-                    <a (click)="changeTab('relations')">Relations</a>
+                <li role="presentation" [ngClass]="{ 'active' : general.selectTabName == 2 }">
+                    <a (click)="changeTab(2)">Relations</a>
                 </li>
             </ul>
-            <app-save-endpoint *ngIf="selectTabName == 'general'"></app-save-endpoint>
-            <app-relations *ngIf="selectTabName == 'relations'"></app-relations>
-            <app-properties *ngIf="selectTabName == 'properties'"></app-properties>
-            
+            <app-save-endpoint [general]="general" *ngIf="general.selectTabName == 0"></app-save-endpoint>
+            <app-properties [general]="general" *ngIf="general.selectTabName == 1"></app-properties>
+            <app-relations [general]="general" *ngIf="general.selectTabName == 2"></app-relations>
         </div>
     </div>
 </div>

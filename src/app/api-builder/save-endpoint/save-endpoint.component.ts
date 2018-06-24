@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { GeneratorModel, GeneratorSteps } from './../_models/GeneratorModel';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-save-endpoint',
@@ -7,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SaveEndpointComponent implements OnInit {
 
-  general: any = {};
-  constructor() { }
+  @Input() general: GeneratorModel;
+  
 
   ngOnInit() {
+  }
+
+  SaveData(){
+    debugger
+    this.general.selectTabName = GeneratorSteps.properties;
+    console.log(this.general);
   }
 
 }
