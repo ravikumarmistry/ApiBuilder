@@ -6,6 +6,9 @@ export class GeneratorModel {
         this.validations = [];
         this.selectTabName = GeneratorSteps.general;
         this.properties = {};
+        this.name = '';
+        this.description = '';
+        this.base = 'PersistedModel';
     }
     name: string; // See Top-level properties below
     description: string;
@@ -57,4 +60,15 @@ export class TypeDef {
     max?: number;
     min?: number;
     pattern?: string;
+}
+
+export class SimplePropertiesModel {
+
+    constructor() {
+        this.definition = new TypeDef();
+        this.name = '';
+    }
+
+    definition: TypeDef;
+    name: string;
 }

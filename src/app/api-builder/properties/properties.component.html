@@ -1,16 +1,82 @@
 <div class="panel panel-default" style="border-radius: 0; border-top: none;">
   <div class="panel-body">
-    <div *ngFor="let key of keys">
-      {{key}}
+
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal1">
+          Add Property
+        </button>
+      </div>
     </div>
 
-    <form #form="ngForm" (ngSubmit)="form.valid && SaveData()">
-      <div>
-        Name:
-        <input name="name" type="text" placeholder="Enter property name" [(ngModel)]="name" />
-        <input type="button" (click)="addproperty()" value="Add New">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>
+              Property Name
+            </th>
+            <th>
+              Property Type
+            </th>
+            <th>
+              Required
+            </th>
+            <th>
+              Action
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let property of properties | keys">
+            <td>{{property}}</td>
+            <td>{{properties[property].type}}</td>
+            <td>{{properties[property].required}}</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Property</h4>
+          </div>
+          <div class="modal-body">
+            <form #form="ngForm" novalidate (ngSubmit)="form.valid && SaveData()">
+              <div class="form-group">
+                <label for="propertyName">Property Name</label>
+                <input type="text" class="form-control" [(ngModel)]="property.name" name="propertyName" required #name="ngModel"  placeholder="Property Name" required>
+              </div>
+              <div class="form-group">
+                <label for="propertyType">Property Type</label>
+                <select class="form-control" name="base" [(ngModel)]="property.definition.type" required>
+                  <option *ngFor="let type of types" >{{type}}</option>
+                </select>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox"> Check me out
+                </label>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
       </div>
-      <button type="submit" class="btn btn-default">Next</button>
-    </form>
+    </div>
+
   </div>
 </div>
+
+<!-- Modal -->

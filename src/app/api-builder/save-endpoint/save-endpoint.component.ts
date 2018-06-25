@@ -9,13 +9,10 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SaveEndpointComponent implements OnInit {
 
   @Input() general: GeneratorModel;
-  
-
   ngOnInit() {
   }
 
-  SaveData(){
-    debugger
+  SaveData() {
     this.general.selectTabName = GeneratorSteps.properties;
     console.log(this.general);
   }

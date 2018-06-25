@@ -7,6 +7,7 @@ import { EndpointsComponent } from './endpoints/endpoints.component';
 import { SaveEndpointComponent } from './save-endpoint/save-endpoint.component';
 import { PropertiesComponent } from './properties/properties.component';
 import { RelationsComponent } from './relations/relations.component';
+import { KeysPipe } from './Pipes/keys.pipe';
 
 @NgModule({
   imports: [
@@ -14,6 +15,6 @@ import { RelationsComponent } from './relations/relations.component';
     ApiBuilderRoutingModule,
     FormsModule
   ],
-  declarations: [EndpointsComponent, SaveEndpointComponent, PropertiesComponent, RelationsComponent]
+  declarations: [EndpointsComponent, SaveEndpointComponent, PropertiesComponent, RelationsComponent, KeysPipe]
 })
 export class ApiBuilderModule { }
