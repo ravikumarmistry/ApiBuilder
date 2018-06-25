@@ -33,7 +33,7 @@
             <td>{{property}}</td>
             <td>{{properties[property].type}}</td>
             <td>{{properties[property].required}}</td>
-            <td></td>
+            <td> <button (click)="edit(property)">Edit</button> | <button (click)="delete(property)">Delete</button> </td> 
           </tr>
         </tbody>
       </table>
@@ -52,31 +52,59 @@
             <form #form="ngForm" novalidate (ngSubmit)="form.valid && SaveData()">
               <div class="form-group">
                 <label for="propertyName">Property Name</label>
-                <input type="text" class="form-control" [(ngModel)]="property.name" name="propertyName" required #name="ngModel"  placeholder="Property Name" required>
+                <input type="text" class="form-control" [(ngModel)]="property.name" #name="ngModel" name="propertyName" required placeholder="Property Name"
+                  required>
               </div>
               <div class="form-group">
                 <label for="propertyType">Property Type</label>
                 <select class="form-control" name="base" [(ngModel)]="property.definition.type" required>
-                  <option *ngFor="let type of types" >{{type}}</option>
+                  <option *ngFor="let type of types">{{type}}</option>
                 </select>
               </div>
               <div class="checkbox">
                 <label>
-                  <input type="checkbox"> Check me out
+                  <input type="checkbox" [(ngModel)]="property.definition.required"  name="required"> Required
                 </label>
+              </div>
+              <div class="form-group">
+                <label for="propertyName">Length</label>
+                <input type="number" class="form-control" [(ngModel)]="property.definition.length" name="length" required placeholder="Length">
+              </div>
+              <div class="form-group">
+                <label for="propertyName">Default Value</label>
+                <input type="text" class="form-control" [(ngModel)]="property.definition.default" name="default" required placeholder="Default value">
+              </div>
+              <div class="form-group">
+                <label for="propertyName">Description</label>
+                <textarea class="form-control" [(ngModel)]="property.definition.description" name="description" placeholder="Description"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="propertyName">Min</label>
+                <input type="number" class="form-control" [(ngModel)]="property.definition.max" name="max" placeholder="Max value">
+              </div>
+              <div class="form-group">
+                <label for="propertyName">Max</label>
+                <input type="number" class="form-control" [(ngModel)]="property.definition.min" name="min" placeholder="Min value">
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" [(ngModel)]="property.definition.id" name="id"> this is an Id?
+                </label>
+              </div>
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" [(ngModel)]="property.definition.index" name="index"> this is an Index?
+                </label>
+              </div>
+              <div class="form-group">
+                <label for="propertyName">Pattern</label>
+                <input type="text" class="form-control" [(ngModel)]="property.definition.pattern" name="pattern" placeholder="Property Name">
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
         </div>
       </div>
     </div>
-
   </div>
 </div>
-
-<!-- Modal -->

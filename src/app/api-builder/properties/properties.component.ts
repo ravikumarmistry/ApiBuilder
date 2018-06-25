@@ -16,7 +16,7 @@ export class PropertiesComponent implements OnInit {
 
 
   ngOnInit() {
-    this.properties['name'] = { type: 'string', default: 'abc', required: false };
+    // this.properties['name'] = { type: 'string', default: 'abc', required: false };
     console.log(Object.keys(this.properties));
 
     // this.keys = Object.keys(this.general.properties);
@@ -24,12 +24,21 @@ export class PropertiesComponent implements OnInit {
   }
 
   SaveData() {
-    //console.log(this.general);
+    debugger
+    console.log(this.property);
+    this.properties[this.property.name] = this.property.definition;
+    this.property = new SimplePropertiesModel();
   }
 
-  addproperty() {
-    //this.general.properties[this.name] = new TypeDef();
+  edit(prop: string) {
+    this.property.name = prop;
+    this.property.definition = this.properties[prop];
   }
 
+  delete(prop: string) {
+    if (confirm("You want to delete this property: " + prop + "?")) {
+      delete this.properties[prop];
+    }
+  }
 
 }

@@ -45,7 +45,7 @@ export enum DataTypes {
 }
 
 export class PropertiesModel {
-    [key: string]: TypeDef | string;
+    [key: string]: TypeDef | string | any;
 }
 
 
